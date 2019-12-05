@@ -1,0 +1,29 @@
+{
+	"name": "rust-gstreamer-pytorch-gpu",
+	"context": ".",
+	"dockerFile": "Dockerfile",
+	"runArgs": [
+		"--name", "rust-gst-torch-gpu",
+		"--gpus=all",
+		"--device", "/dev/snd",
+		"--cap-add=SYS_PTRACE",
+		"--security-opt", "seccomp=unconfined",
+		"-e", "DISPLAY=${env:DISPLAY}",
+		"-e", "PULSE_SERVER=unix:${env:XDG_RUNTIME_DIR}/pulse/native",
+		"-v", "/tmp/.X11-unix:/tmp/.X11-unix",
+		"-v", "${env:XDG_RUNTIME_DIR}/pulse/native:${env:XDG_RUNTIME_DIR}/pulse/native"
+	],
+	"extensions": [
+		"bungcip.better-toml",
+		"rust-lang.rust",
+		"vadimcn.vscode-lldb",
+		"eamodio.gitlens",
+		"ms-vscode.cpptools",
+		"vector-of-bool.cmake-tools"
+	],
+	"settings": {
+		"lldb.adapterType": "native",
+		"lldb.executable": "/usr/bin/lldb",
+		"terminal.integrated.shell.linux": "/bin/bash"
+	}
+}
