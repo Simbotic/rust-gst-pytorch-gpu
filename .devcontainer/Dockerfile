@@ -1,6 +1,6 @@
 ARG UBUNTU_VERSION=18.04
 
-FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu${UBUNTU_VERSION} as base
+FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu${UBUNTU_VERSION} as base
 ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES},display
 
 ENV DEBIAN_FRONTEND=noninteractive
