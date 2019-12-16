@@ -22,13 +22,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         unzip \
         zip \
         libzmq3-dev \
-        python-dev \
-        python-numpy \
         python3-dev \
         python3-numpy \
-        python-pip \
         python3-pip \
-        python-tk \
         python3-tk \
         libtbb2 \
         libtbb-dev \
@@ -106,8 +102,7 @@ RUN cargo install fd-find ripgrep
 
 
 # Symlink for pip3
-# RUN sudo ln -s /usr/bin/pip3 /usr/bin/pip
+RUN sudo ln -s /usr/bin/pip3 /usr/bin/pip
 
 #Pytorch
-RUN sudo pip3 install https://download.pytorch.org/whl/cu100/torch-1.3.1%2Bcu100-cp36-cp36m-linux_x86_64.whl
-RUN sudo pip3 install torchvision 
+RUN sudo pip install torch torchvision
