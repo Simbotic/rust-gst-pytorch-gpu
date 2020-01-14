@@ -46,7 +46,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         procps \
         lsb-release \
         x11-xserver-utils \
-        libmagick++-dev
+        libmagick++-dev \ 
+        libnccl2 \ 
+        libnccl-dev \ 
+        libyaml-dev
 
 # GStreamer
 

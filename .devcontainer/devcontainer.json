@@ -11,7 +11,10 @@
 		"-e", "DISPLAY=${env:DISPLAY}",
 		"-e", "PULSE_SERVER=unix:${env:XDG_RUNTIME_DIR}/pulse/native",
 		"-v", "/tmp/.X11-unix:/tmp/.X11-unix",
-		"-v", "${env:XDG_RUNTIME_DIR}/pulse/native:${env:XDG_RUNTIME_DIR}/pulse/native"
+		"-v", "${env:XDG_RUNTIME_DIR}/pulse/native:${env:XDG_RUNTIME_DIR}/pulse/native",
+		"-v", "${localWorkspaceFolder}/playground:/playground",
+		"-v", "${localWorkspaceFolder}/videos:/videos",
+		"-v", "${localWorkspaceFolder}/data:/data"
 	],
 	"extensions": [
 		"bungcip.better-toml",
