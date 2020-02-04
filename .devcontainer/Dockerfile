@@ -22,10 +22,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         unzip \
         zip \
         libzmq3-dev \
-        python3-dev \
-        python3-numpy \
-        python3-pip \
-        python3-tk \
         libtbb2 \
         libtbb-dev \
         libjpeg-dev \
@@ -46,8 +42,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         procps \
         lsb-release \
         x11-xserver-utils \
-        libmagick++-dev \ 
-        libnccl2 \ 
+        libmagick++-dev \
+        python3-dev
+
+# I'm not sure about --allow-change-held-packages
+RUN apt install -y --allow-change-held-packages libnccl2 \
         libnccl-dev \ 
         libyaml-dev
 
@@ -103,9 +102,15 @@ ENV PATH=$HOME/.cargo/bin:$PATH
 RUN rustup component add rls rust-analysis rust-src rustfmt clippy
 RUN cargo install fd-find ripgrep
 
+# Pip from installation script to install the lastest version
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN sudo python3 get-pip.py
 
-# Symlink for pip3
-RUN sudo ln -s /usr/bin/pip3 /usr/bin/pip
+#        python3-numpy \
+#        python3-pip \
+#        python3-tk \
 
 #Pytorch
 RUN sudo pip install torch torchvision
+
+# Remember de Pillow version 7.0.0 bug
